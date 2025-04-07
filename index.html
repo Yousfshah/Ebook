@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI For Kids - Interactive Educational Ebook for Pakistani Students | Yousuf Shah</title>
+    <meta name="description" content="An interactive educational ebook about Artificial Intelligence designed for Pakistani children. Learn about AI through engaging stories and rhymes.">
+    <meta name="keywords" content="AI for kids, artificial intelligence, educational ebook, Pakistani education, children's technology book, learning AI">
+    <meta name="author" content="Yousuf Shah">
+    <meta property="og:title" content="AI For Kids - Interactive Educational Ebook">
+    <meta property="og:description" content="Explore the world of AI through fun, interactive stories designed for children">
+    <meta property="og:image" content="images/Title.jpg">
+    <meta property="og:url" content="https://yousfshah.github.io/AI-For-Kids/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6d5dfc;
+            --secondary-color: #25b0bc;
+            --accent-color: #ff7846;
+            --background-dark: #121212;
+            --text-dark: #f8f9fa;
+            --card-dark: #1e1e1e;
+            --background-light: #f8f9fa;
+            --text-light: #212529;
+            --card-light: #ffffff;
+            --shadow-dark: rgba(0, 0, 0, 0.4);
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --timeline-color: var(--secondary-color);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-dark);
+            color: var(--text-dark);
+            padding-bottom: 2rem;
+            overflow-x: hidden;
+        }
+
+        body.light-mode {
+            background-color: var(--background-light);
+            color: var(--text-light);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        header {
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px var(--shadow-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 100;
+        }
+
+        .book-title {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 0 2px 15px var(--shadow-dark);
+            animation: fadeInDown 1s ease;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .book-title::after {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 4px;
+            bottom: 0;
+            left: 10%;
+            background: linear-gradient(90deg, transparent, white, transparent);
+            border-radius: 2px;
+        }
+
+        .book-title i {
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+        }
+
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(109, 93, 252, 0.9), rgba(37, 176, 188, 0.9)), url('images/Title.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 2rem;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 30%, var(--background-dark) 100%);
+            z-index: -1;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: white;
+            animation: fadeIn 1.5s ease;
+            max-width: 800px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            line-height: 1.4;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.2);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .scroll-indicator:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        .intro {
+            max-width: 800px;
+            margin: 0 auto 6rem;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            background-color: var(--card-dark);
+            box-shadow: 0 10px 30px var(--shadow-dark);
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        body.light-mode .intro {
+            background-color: var(--card-light);
+            box-shadow: 0 10px 30px var(--shadow-light);
+        }
+
+        .intro img, .conclusion img {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            border-radius: 0.8rem;
+            margin: 1.8rem auto;
+            display: block;
+            box-shadow: 0 8px 25px var(--shadow-dark);
+            transition: transform 0.3s ease;
+        }
+
+        .intro img:hover, .conclusion img:hover {
+            transform: scale(1.02);
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .signature {
+            font-style: italic;
+            text-align: right;
+            margin-top: 1rem;
+        }
+
+        .chapters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .chapter {
+            max-width: 800px;
+            margin: 0 auto 6rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .chapter.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .chapter:nth-child(odd) {
+            margin-right: 0;
+            margin-left: auto;
+        }
+
+        .chapter:nth-child(even) {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .chapter-inner {
+            background-color: var(--card-dark);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow-dark);
+            transition: transform 0.3s ease;
+            position: relative;
+            animation: pulse 4s infinite;
+            animation-play-state: paused;
+        }
+
+        .chapter-inner::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--timeline-color);
+            border-radius: 50%;
+            top: 2rem;
+            z-index: 5;
+        }
+
+        .chapter:nth-child(odd) .chapter-inner::before {
+            left: -40px;
+        }
+
+        .chapter:nth-child(even) .chapter-inner::before {
+            right: -40px;
+        }
+
+        .chapter:nth-child(odd) .chapter-inner::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 4px;
+            background-color: var(--timeline-color);
+            top: 2.5rem;
+            left: -40px;
+        }
+
+        .chapter:nth-child(even) .chapter-inner::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 4px;
+            background-color: var(--timeline-color);
+            top: 2.5rem;
+            right: -40px;
+        }
+
+        body.light-mode .chapter-inner {
+            background-color: var(--card-light);
+            box-shadow: 0 10px 30px var(--shadow-light);
+        }
+
+        .chapter-inner:hover {
+            transform: translateY(-10px);
+            animation-play-state: running;
+        }
+
+        .chapter-title {
+            padding: 1.5rem;
+            font-size: 1.8rem;
+            color: white;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-bottom: none;
+            text-align: center;
+        }
+
+        .chapter-content {
+            padding: 2rem;
+        }
+
+        .chapter img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 5px 15px var(--shadow-dark);
+            transition: transform 0.3s ease;
+        }
+
+        .chapter img:hover {
+            transform: scale(1.05);
+        }
+
+        .concept-summary {
+            margin-bottom: 1rem;
+        }
+
+        .concept, .summary {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .rhyme {
+            font-style: italic;
+            background: linear-gradient(135deg, rgba(109, 93, 252, 0.1), rgba(37, 176, 188, 0.1));
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .conclusion {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            padding: 2rem;
+            border-radius: 1rem;
+            background-color: var(--card-dark);
+            box-shadow: 0 10px 30px var(--shadow-dark);
+        }
+
+        body.light-mode .conclusion {
+            background-color: var(--card-light);
+            box-shadow: 0 10px 30px var(--shadow-light);
+        }
+
+        .conclusion h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .takeaways {
+            margin: 1.5rem 0;
+        }
+
+        .takeaways h5 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .takeaways li {
+            margin-bottom: 0.5rem;
+            list-style-type: none;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .takeaways li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+
+        .final-message {
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 1.2rem;
+        }
+
+        .emoji {
+            font-size: 1.5rem;
+            vertical-align: middle;
+        }
+
+        .author-section {
+            max-width: 800px;
+            margin: 6rem auto;
+            padding: 3rem;
+            border-radius: 1.2rem;
+            background-color: var(--card-dark);
+            box-shadow: 0 15px 40px var(--shadow-dark);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .author-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), #9c27b0, #e91e63);
+            background-size: 400% 400%;
+            animation: gradient 8s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        body.light-mode .author-section {
+            background-color: var(--card-light);
+            box-shadow: 0 15px 40px var(--shadow-light);
+        }
+
+        .author-label {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+            opacity: 0.8;
+        }
+
+        .author-name {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            background-image: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            position: relative;
+            padding: 0 1rem;
+        }
+
+        .author-name::before, .author-name::after {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+
+        .author-name::before {
+            left: -1rem;
+        }
+
+        .author-name::after {
+            right: -1rem;
+        }
+
+        .author-name a {
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .linkedin-link {
+            background: #0077b5;
+        }
+
+        .portfolio-link {
+            background: #6d5dfc;
+        }
+
+        .github-link {
+            background: #333;
+        }
+
+        .kaggle-link {
+            background: #20beff;
+        }
+
+        body.light-mode .social-link {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-link:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .social-link i {
+            font-size: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-tooltip {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            white-space: nowrap;
+            font-weight: 500;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-link:hover .social-tooltip {
+            opacity: 1;
+            bottom: -35px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 99;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .book-title {
+                font-size: 2.5rem;
+            }
+            
+            .theme-toggle {
+                top: 1rem;
+                right: 1rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .chapters {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-links {
+                gap: 1rem;
+            }
+            
+            .social-link {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .social-link i {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Enhanced heading styles */
+        h1, h2, h3, h4, h5, h6 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Colored icons */
+        .concept i {
+            color: var(--accent-color);
+        }
+
+        .summary i {
+            color: var(--primary-color);
+        }
+
+        .chapter-title i {
+            color: rgba(255, 255, 255, 0.8);
+            margin-right: 0.5rem;
+            font-size: 1.2em;
+        }
+
+        h2 i, h3 i, h5 i {
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+        }
+
+        /* Smooth scroll enhancements */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 2rem;
+        }
+
+        /* Enhanced chapter animations */
+        .chapter[data-aos="fade-right"] {
+            transform: translateX(-50px);
+        }
+
+        .chapter[data-aos="fade-left"] {
+            transform: translateX(50px);
+        }
+
+        .chapter.visible {
+            transform: translateY(0) translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-sun"></i>
+    </button>
+    
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <h1 class="book-title"><i class="fas fa-book-open"></i> AI For Kids</h1>
+        <p class="tagline">An interactive journey into the magical world of Artificial Intelligence for young explorers</p>
+        <a href="#story-start" class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <div class="container" id="story-start">
+        <div class="story-container">
+            <div class="timeline"></div>
+            <div class="timeline-start"></div>
+            <div class="timeline-end"></div>
+
+            <section class="intro">
+                <h2><i class="fas fa-scroll"></i> The Beginning of Our Journey</h2>
+                <p>
+                    "Hello Little Explorers! <i class="fas fa-child"></i> <i class="fas fa-robot"></i>"
+                </p>
+                <p>
+                    I'm Zuno, your friendly AI Storyteller from the future <i class="fas fa-star"></i>. I've travelled all the way from the year 2099 just to share magical stories about a super cool thing called Artificial Intelligence, or AI for short!
+                </p>
+                <p>
+                    You might be thinking, "What's AI? Is it a robot? A talking fridge? A drawing machine?" Well… yes, yes, and YES! <i class="fas fa-brain"></i><i class="fas fa-sparkles"></i>
+                </p>
+                <p>
+                    AI is like a smart helper that lives in computers, phones, and even in toys! It can learn, talk, draw, sing, and even help your grandpa in the garden!
+                </p>
+                <img src="images/Title.jpg" alt="AI For Kids Title Image">
+                <p>
+                    Through these stories, poems, and fun adventures, you'll discover how AI works, where it lives, and how it's helping people all over the world — including you <i class="fas fa-globe-asia"></i>.
+                </p>
+                <p>
+                    So buckle up, grab your snacks <i class="fas fa-cookie"></i>, and get ready for some techy tales, robot rhymes, and future dreams!
+                </p>
+                <p>
+                    Let's unlock the magic of AI together <i class="fas fa-lightbulb"></i><i class="fas fa-robot"></i><i class="fas fa-rocket"></i>
+                </p>
+                <p class="signature">
+                    — Your Friend,<br>
+                    Zuno the AI Storyteller
+                </p>
+            </section>
+
+            <div class="chapters">
+                <div class="chapter" data-aos="fade-right">
+                    <div class="chapter-inner">
+                        <h3 class="chapter-title"><i class="fas fa-refrigerator"></i> Laila and the Talking Fridge</h3>
+                        <div class="chapter-content">
+                            <div class="concept-summary">
+                                <p><span class="concept"><i class="fas fa-microchip"></i> AI Concept:</span> Smart Devices / Internet of Things (IoT)</p>
+                                <p><span class="summary"><i class="fas fa-file-alt"></i> Summary:</span> Laila discovers that her fridge talks to her and tells her catch apple</p>
+                            </div>
+                            <img src="images/Fridge.jpg" alt="Talking Fridge Image">
+                            <div class="rhyme">
+                                "Beep beep, the fridge did say,<br>
+                                'We're out of apple, go shop today!'<br>
+                                Smart machines help night and day,<br>
+                                In little tasks, they guide our way!"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chapter" data-aos="fade-left">
+                    <div class="chapter-inner">
+                        <h3 class="chapter-title"><i class="fas fa-calculator"></i> Zain and Robo the Homework Helper</h3>
+                        <div class="chapter-content">
+                            <div class="concept-summary">
+                                <p><span class="concept"><i class="fas fa-microchip"></i> AI Concept:</span> Natural Language Processing (like ChatGPT!)</p>
+                                <p><span class="summary"><i class="fas fa-file-alt"></i> Summary:</span> Zain asks his AI buddy to help explain math. The robot breaks it down like a friend.</p>
+                            </div>
+                            <img src="images/Homework.jpg" alt="Homework Helper Image">
+                            <div class="rhyme">
+                                "If you don't know what to do,<br>
+                                Ask Robo, he'll help you through!<br>
+                                Numbers, sums, or even rhyme,<br>
+                                He makes learning super fine!"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chapter" data-aos="fade-right">
+                    <div class="chapter-inner">
+                        <h3 class="chapter-title"><i class="fas fa-palette"></i> The Art Show Surprise</h3>
+                        <div class="chapter-content">
+                            <div class="concept-summary">
+                                <p><span class="concept"><i class="fas fa-microchip"></i> AI Concept:</span> AI Art & Creativity</p>
+                                <p><span class="summary"><i class="fas fa-file-alt"></i> Summary:</span> Kids make paintings with the help of AI that turns their dreams into pictures.</p>
+                            </div>
+                            <img src="images/Groups.jpg" alt="Art Show Image">
+                            <div class="rhyme">
+                                "We draw a cat, it turns to gold,<br>
+                                A unicorn with wings so bold!<br>
+                                AI makes our dreams look real,<br>
+                                Painting things we think and feel!"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chapter" data-aos="fade-left">
+                    <div class="chapter-inner">
+                        <h3 class="chapter-title"><i class="fas fa-seedling"></i> Grandpa's Robot Gardener</h3>
+                        <div class="chapter-content">
+                            <div class="concept-summary">
+                                <p><span class="concept"><i class="fas fa-microchip"></i> AI Concept:</span> Robotics & Automation</p>
+                                <p><span class="summary"><i class="fas fa-file-alt"></i> Summary:</span> Grandpa gets help in the garden from a helpful robot who waters plants and picks flowers.</p>
+                            </div>
+                            <img src="images/Oldman.jpg" alt="Robot Gardener Image">
+                            <div class="rhyme">
+                                "Snip snip goes the robot hand,<br>
+                                Picking flowers just as planned!<br>
+                                AI helps both young and old,<br>
+                                With gentle hands and heart of gold!"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chapter" data-aos="fade-right">
+                    <div class="chapter-inner">
+                        <h3 class="chapter-title"><i class="fas fa-school"></i> What if AI Was in School?</h3>
+                        <div class="chapter-content">
+                            <div class="concept-summary">
+                                <p><span class="concept"><i class="fas fa-microchip"></i> AI Concept:</span> AI in Education</p>
+                                <p><span class="summary"><i class="fas fa-file-alt"></i> Summary:</span> A daydream story where the teacher is helped by an AI assistant to make class fun</p>
+                            </div>
+                            <img src="images/classroom.jpg" alt="AI in School Image">
+                            <div class="rhyme">
+                                "AI shows us stars and space,<br>
+                                Even takes us to a dinosaur's place!<br>
+                                Learning turns into a game,<br>
+                                And every day's never the same!"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chapter" data-aos="fade-left">
+                    <div class="chapter-inner">
+                        <h3 class="chapter-title"><i class="fas fa-shield-alt"></i> The Day AI Saved the Kids</h3>
+                        <div class="chapter-content">
+                            <div class="concept-summary">
+                                <p><span class="concept"><i class="fas fa-microchip"></i> AI Concept:</span> AI in Safety & Transportation</p>
+                                <p><span class="summary"><i class="fas fa-file-alt"></i> Summary:</span> A storm hits the town, but AI alerts help rescue teams and save the day!</p>
+                            </div>
+                            <img src="images/drone.jpg" alt="AI Safety Image">
+                            <div class="rhyme">
+                                "AI said, 'Be safe, don't fear,'<br>
+                                Help is coming, it's very near!<br>
+                                With maps and drones up in the sky,<br>
+                                It guided help, oh my oh my!"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chapter" data-aos="fade-right">
+                    <div class="chapter-inner">
+                        <h3 class="chapter-title"><i class="fas fa-lightbulb"></i> Future Dreams with AI</h3>
+                        <div class="chapter-content">
+                            <div class="concept-summary">
+                                <p><span class="concept"><i class="fas fa-microchip"></i> AI Concept:</span> Future Jobs & Ethics</p>
+                                <p><span class="summary"><i class="fas fa-file-alt"></i> Summary:</span> Kids imagine what they'll do with AI when they grow up—be scientists, artists, and helpers.</p>
+                            </div>
+                            <img src="images/Dream.jpg" alt="Future Dreams Image">
+                            <div class="rhyme">
+                                "I'll build a robot that bakes a cake,<br>
+                                Or a dog that swims in a magic lake!<br>
+                                With AI, dreams can grow and play,<br>
+                                Let's shape tomorrow, starting today!"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="conclusion">
+                <h3><i class="fas fa-award"></i> Conclusion & Takeaways</h3>
+                
+                <div class="takeaways">
+                    <h5><i class="fas fa-question-circle"></i> What Did We Learn About AI?</h5>
+                    <ul>
+                        <li>AI is not just for adults—kids can use it too!</li>
+                        <li>It helps in schools, homes, hospitals, and even farms</li>
+                        <li>AI is like a smart friend that learns from us.</li>
+                        <li>We should use AI kindly and wisely.</li>
+                        <li>One day, you could build the next amazing AI!</li>
+                    </ul>
+                </div>
+                
+                <img src="images/Boys.jpg" alt="Conclusion Image">
+                
+                <div class="rhyme">
+                    "AI is fun, AI is smart,<br>
+                    It helps us grow, it plays a part.<br>
+                    Be curious, kind, and always try,<br>
+                    The future's yours to reach the sky!"
+                </div>
+                
+                <div class="final-message">
+                    <p><span class="emoji">🌟</span> The Journey Never Ends...</p>
+                    <p>"You've now taken your first steps into a world full of wonder and light — the world of Artificial Intelligence!"</p>
+                    <p>AI is not just machines and robots...</p>
+                    <p>It's imagination, learning, and teamwork.</p>
+                    <p>It's about helping people, solving problems, and creating magical futures!</p>
+                    <p>Every question you ask, every dream you have — AI can help bring it to life.</p>
+                    <p>One day, You could be the one to invent the next AI friend, game, doctor, artist, or space explorer. <span class="emoji">🚀</span></p>
+                    
+                    <img src="images/End.jpg" alt="Final Image">
+                    
+                    <p>So stay curious. Stay kind.</p>
+                    <p>And remember — the future is made by dreamers like you.</p>
+                    <p>Until we meet again in our next tech adventure...</p>
+                    <p><span class="emoji">🤖💙</span></p>
+                    <p class="signature">– With love, from Zuno the AI Storyteller</p>
+                </div>
+            </section>
+
+            <section class="author-section">
+                <p class="author-label">Created by</p>
+                <h2 class="author-name">
+                    <a href="https://www.linkedin.com/in/yousuf-shah-7ba9492b4/" target="_blank">Yousuf Shah</a>
+                </h2>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/yousuf-shah-7ba9492b4/" target="_blank" class="social-link linkedin-link">
+                        <i class="fab fa-linkedin"></i>
+                        <span class="social-tooltip">LinkedIn</span>
+                    </a>
+                    <a href="https://yousfshah.github.io/Portfolio_Website/" target="_blank" class="social-link portfolio-link">
+                        <i class="fas fa-globe"></i>
+                        <span class="social-tooltip">Portfolio</span>
+                    </a>
+                    <a href="https://github.com/Yousfshah" target="_blank" class="social-link github-link">
+                        <i class="fab fa-github"></i>
+                        <span class="social-tooltip">GitHub</span>
+                    </a>
+                    <a href="https://www.kaggle.com/yousufshah" target="_blank" class="social-link kaggle-link">
+                        <i class="fab fa-kaggle"></i>
+                        <span class="social-tooltip">Kaggle</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
+            const icon = themeToggle.querySelector('i');
+            
+            // Check for saved theme preference or use default (dark)
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            
+            // Apply saved theme
+            if (savedTheme === 'light') {
+                body.classList.add('light-mode');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+            
+            // Theme toggle functionality
+            themeToggle.addEventListener('click', function() {
+                body.classList.toggle('light-mode');
+                
+                // Update icon
+                if (body.classList.contains('light-mode')) {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                once: false
+            });
+
+            // Intersection Observer for chapters
+            const chapters = document.querySelectorAll('.chapter');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            chapters.forEach(chapter => {
+                observer.observe(chapter);
+            });
+
+            // Back to top button
+            const backToTopButton = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 500) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+
+            backToTopButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
