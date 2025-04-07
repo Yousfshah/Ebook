@@ -1,7 +1,7 @@
 # **Intro**
 In this repository, I will be developing a high-quality, professionally designed ebook tailored specifically for young children. The ebook will focus on teaching the fundamentals of artificial intelligence in an engaging and accessible way.
 <div style="text-align: center;">
-    <img src="banner.png" alt="My Banner" style="width: 100%; max-width: 700px; height:400px; border-radius: 10px;"/>
+    <img src="Banner.png" alt="My Banner" style="width: 100%; max-width: 700px; height:400px; border-radius: 10px;"/>
 </div>
 To make learning fun and memorable, the content will be presented in a story-driven format, complete with playful rhymes and captivating narratives. The goal is to introduce AI concepts to kids through an interactive and entertaining approach.
 
